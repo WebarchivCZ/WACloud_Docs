@@ -1,5 +1,7 @@
 # WACloud_Docs
-User documentation for WACloud (Centralised interface for Webarchive data extraction and analysis).
+User documentation for WACloud: Centralised interface for Webarchive data extraction and analysis.
+
+Detailed documentation: https://github.com/WebarchivCZ/WACloud_Docs/wiki
 
 ## Funding - dedication
 
