@@ -288,7 +288,7 @@ Jedná se o hlavní datovou tabulku, kde jeden záznam odpovídá jedné sklizen
 - identifikátor sklizně (odkaz na tabulku sklizní)
 4. **title** 		(utf-8 string) 	
 5. **plain-text** 	(utf-8 string) 	
-6. **language **	(utf-8 string) 	
+6. **language**	        (utf-8 string) 	
 7. **sentiment** 	(float uložený jako string) 	
 8. **headlines**	(pole stringů serializované do formátu JSON) 	
 9. **topics** 		(pole stringů serializované do formátu JSON) 	
@@ -341,7 +341,7 @@ Sloupec t_started a t_finished používá stejný formát jako jako HBase timest
 Přihlášení je možné pomocí uživatelského jména a hesla na adrese https://www.wacloud.nkp.cz.  
 Na úvodní stránce lze přepnout do anglické jazykové verze nebo si přečíst v sekci FAQ nejčastější dotazy a odpovědi na ně. Po přihlášení se uživatel dostane na první část dotazu.
 
-![Přihlášení](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok3.png)   
+![Přihlášení](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok3.PNG)   
 
 ### STRÁNKA DOTAZU (½)
 Dotaz je rozdělen do dvou částí s vlastním rozhraním. Rozhraní první části dotazu se skládá z několika sekcí. Nahoře je umístěna hlavička aplikace, v levém sloupci se nastavují parametry vyhledávání (Filtry a Nastavení limitů), vpravo pod hlavičkou je umístěno pole dotazu (Dotaz) s Logickými operátory (AND, OR, NOT, levá a pravá závorka), pod nímž je umístěna tabulka sklizní (Sklizně). Pod tabulkou Sklizně je tlačítko Pokračovat, které umožňuje přejít k analytickým dotazům v druhé části dotazu.
@@ -351,7 +351,7 @@ V hlavičce se nachází dvě skupiny odkazů. Nalevo je umožněn návrat na hl
 Vpravo jsou odkazy na kategorie **Nový dotaz**, **Oblíbené**, předchozí dotazy (**Moje dotazy**), **FAQ**, která zahrnuje i odkaz na dokumentaci, a na uživatelské nastavení (**Uživatel**), v němž je možné se z aplikace odhlásit, případně změnit jazykovou verzi (českou nebo anglickou). 
 Aktuální režim kategorie (stránky) má modrou barvu.
 
-![Hlavička rozhraní](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok4.png)   
+![Hlavička rozhraní](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok4.PNG)   
 
 
 #### Tabulka FILTRY
@@ -359,7 +359,7 @@ Filtry zahrnují pět kategorií - **Téma, Typ stránky, Datum sklizně, URL a 
 
 Filtry **Téma, Typ stránky a Datum sklizně** se nastavují výběrem z možností. Pro Téma to je několik desítek abecedně seřazených předmětových hesel (ta lze vybírat buď rolováním, nebo je lze psát). U kategorie **Typ stránky** lze zvolit e-shop (internetové obchody), forum (diskusní fóra), news (zpravodajství) a others (ostatní weby, které nezapadají do výše uvedených kategorií). Po vybrání požadovaného parametru je nutné stisknout jedno ze dvou tlačítek/logických operátorů, buď = (rovná se, vyhledává) nebo ≠ (nerovná se, vyjímá z hledání), které přidají parametr do pole **Dotaz** vpravo. 
 
-![Tabulka filtry](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok5.png)   
+![Tabulka filtry](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok5.PNG)   
 
 **Datum sklizně** se volí výběrem z kalendáře, datum lze manuálně přepsat. Pro vložení do dotazu je nutné použít operátor přidat (+).
 
@@ -373,13 +373,13 @@ Pomocí těchto filtrů lze vytvořit složitější dotaz, protože všechny pa
 #### Tabulka NASTAVENÍ LIMITŮ
 Nastavení limitů umožňuje omezit a zpřesnit výsledky vyhledávání.
 
-![Nastavení limitů](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok6.png)   
+![Nastavení limitů](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok6.PNG)   
 
 **Stop slova**
 Stop slova jsou slova, která nebudou zohledněna při dalším vyhledávání  - většinou jde o předložky, spojky, částice nebo zájmena. Uživateli je nabídnuta sada stop slov.
 Stop slova lze přidávat (kolonka vlevo nahoře po napsání a stisknutí +) nebo ubírat (x za každým slovem). Seznam stop slov lze také exportovat nebo importovat do/z vlastní databáze ve formě souboru .txt. Červené tlačítko koš umožňuje vymazat všechna zadaná slova. K použití změněných stop slov je nutné stisknout modré tlačítko Uložit.
 
-![Stop slova](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok7.png)  
+![Stop slova](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok7.PNG)  
 
 **Počet záznamů** umožňuje omezit počet výsledků. Standardně je nastaveno omezení na 100 záznamů. Lze tu také zvolit Náhodné záznamy. Semínko pro náhodnost je řetězec čísel, díky němuž je možné získat opakovaně stejné náhodné záznamy, které jsou seřazeny chronologicky. 
 
@@ -403,7 +403,7 @@ Výše uvedená syntax vyhledává v tematických kolekcích Afghánistán nebo 
 
 Většinu stránky zabírá tabulka sklizní, které lze použít pro vyhledání dotazu. V případě nezvolení žádné sklizně se vyhledává ve všech sklizních. Jednotlivá pole sklizní obsahují jejich názvy, údaje o velikosti, datu spuštění sklizně, o počtu WARCů (což je specializovaný kontejnerový formát určený k uložení archivních webových dat). Sklizně, ve kterých se vyhledává, se zaškrtávají v pravém horním rohu. Tato informace se v poli Dotaz nezobrazí, prohledávané sklizně jsou vidět až v druhé stránce dotazu, která se zobrazí po kliknutí na tlačítko Pokračovat. 
 
-![Tabulka sklizně](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok8.png)  
+![Tabulka sklizně](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok8.PNG)  
 
 **Sklizně**
 V názvech sklizní je obsažen i jejich stručný popis. První slovo názvu označuje typ sklizně, následuje datum zahájení sklizně a frekvence sklizní:
@@ -430,14 +430,14 @@ Na předchozí stránce byly nastaveny filtry pro následné vyhledání analyti
 Pod dotazem je indikátor validity (správnosti) zadaného dotazu (Dotaz je ne/validní). Je zde také informace o tom, v kolika záznamech bude vyhledáváno. Maximální počet záznamů lze nastavit na předchozí stránce - parametr Počet záznamů.
 Pokud je dotaz nevalidní, tak nelze ve vyhledávání pokračovat. Pokud validátor ukáže, že se zpracuje 0 záznamů, tak dotaz nic nenajde, uživatel může dotaz vymezit jiným způsobem.
 
-![Stránka dotazu](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok9.png)  
+![Stránka dotazu](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok9.PNG)  
 
 #### Analytické dotazy
 V části Analytické dotazy je automaticky připraven jeden nevyplněný dotaz, přidávat lze i další dotazy a to modrým tlačítkem **+Přidat další dotaz**.
 Každý dotaz má několik parametrů. Typ dotazu má varianty *Frequency, Collocation, Network a Fulltext*. Následuje políčko pro hledaný text (Zadejte text pro vyhledávání). Hledaný výraz se přidává modrým tlačítkem + a po přidání je vidět v kolonce Seznam výrazů. I zde lze přidat více vyhledávaných výrazů. Celý dotaz lze odstranit červeným tlačítkem.
 
 
-![Analytické dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok10.png) 
+![Analytické dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok10.PNG) 
 
 **Fulltext:** Tento analytický dotaz zobrazuje data v originální podobě (plain text). Kromě samotného textu je výsledkem exportu také URL adresa webu, titulek stránky (název stránky, obsah html tagu `<title>`), jazyk, rok vydání, nadpisy, odkazy na jiné stránky, témata a sentiment. V dotazu je možné nastavit počet záznamů, což je počet nalezených a exportovaných stránek.
 Kromě toho je možné nastavit řazení výsledků a formát exportu.
@@ -466,7 +466,7 @@ Zde stačí zadat i jen část url adresy bez přípony .cz, rozhraní pak bude 
 Stisknutím tlačítka Vyhledat začne vyhledávání, které je vidět níže (STAV PROCESU), po jeho ukončení je možné výsledky přímo stáhnout nebo přidat dotaz mezi oblíbené.
 
 
-![Analytické dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok13.png) 
+![Analytické dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok13.PNG) 
 
 Tlačítko Stáhnout umožní stáhnout do počítače zazipovaný soubor .zip. Ten obsahuje soubory .json nebo .csv (pro fulltext), pro každý ze zadaných analytických dotazů jeden soubor. 
 
@@ -478,7 +478,7 @@ Centralizované rozhraní kromě vyhledání dotazů a jejich stažení umožňu
 Stránka **Moje dotazy** zobrazí historii vyhledávaných dotazů.
 
 
-![Moje dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok14.png) 
+![Moje dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok14.PNG) 
 
 Tabulka ukazuje dotazy -  syntax dotazu, datum vytvoření, stav a také poskytuje možnost dataset znovu stáhnout. Kliknutí na tři tečky umožňuje další manipulaci:
 
