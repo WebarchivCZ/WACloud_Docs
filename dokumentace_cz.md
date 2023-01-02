@@ -385,6 +385,7 @@ Stop slova lze přidávat (kolonka vlevo nahoře po napsání a stisknutí +) ne
 
 #### Pole DOTAZ
 V poli dotaz se zobrazuje syntax dotazu. Ten je sestavován pomocí nastavení jednotlivých parametrů v sloupci nalevo. Dotaz lze upravovat i psaním přímo do pole dotazu.
+Dotaz lze exportovat i importovat - stáhnout si ho do textového souboru (formát .txt) a později nahrát.
 Pod dotazem se nacházejí logické operátory - AND (a), OR (nebo), NOT (ne) a pravá a levá závorka. Tyto operátory umožňují společně se zadáním parametrů filtrů vytvořit složitější dotaz.
 
 **Logické operátory:**
