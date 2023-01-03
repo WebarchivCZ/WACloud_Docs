@@ -491,7 +491,7 @@ Kromě toho je možné přidat dotaz do Oblíbených (na liště vpravo), Zopako
 ![Moje dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok16.png) 
 
 **WARC Archivy**
-Stáhnout lze také data we formátu WARC, kliknutím na možnost WARC Archivy je možné požádat o export. 
+Stáhnout lze také data v formátu WARC, kliknutím na možnost WARC Archivy je možné požádat o export. 
 
 ![WARC Archivy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok17.png) 
 
