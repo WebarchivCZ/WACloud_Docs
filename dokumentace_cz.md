@@ -559,6 +559,11 @@ Stránka **Oblíbené** zobrazuje oblíbené dotazy a umožňuje s nimi manipulo
 
 ![Oblíbené dotazy](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok21.png) 
 
+### Administrátorské rozhraní
+Administrace umožňuje spravovat uživatelské účty, dotazy a vkládat a odebírat sklizně.
+
+![Administrátorské rozhraní](https://github.com/WebarchivCZ/WACloud_Docs/blob/main/dok23.PNG) 
+
 ### EXPORTY DAT
 Centralizované rozhraní umožňuje export výsledků, většinou ve formátu .json
 
