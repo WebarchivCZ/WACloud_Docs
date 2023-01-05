@@ -7,7 +7,7 @@
 
 
 # WACloud: Centralizované rozhraní pro vytěžování velkých dat z webového archivu
-### *Průvodní dokumentace k výsledku typu ověřená technologie *
+### Průvodní dokumentace k výsledku typu ověřená technologie
 
 
 
@@ -105,7 +105,31 @@ Komponenty, které jsou vyžadovány hlavními komponentami:
 Každá podpůrná komponenta má svůj vlastní účel a je využívána jednou nebo více hlavními komponentami.
 
 ### Cluster
-Cluster je primárně vytvořen nad name node více data nody pomocí nástrojů pro správu Ambari nebo Bigtop. Slouží k ukládání vstupních dat ve formátu WARC v distribuovaném souborovém systému HadoopFS a ke spouštění dotazů ve službě Spark nad těmito distribuovanými daty.
+Slouží k ukládání vstupních dat ve formátu WARC v distribuovaném souborovém systému HadoopFS a ke spouštění dotazů ve službě Spark nad těmito distribuovanými daty. Cluster je provozován v prostředí NKP. Je implementován v struktuře:
+
+- 1x Aplikační node využívající zdroje clusteru pro Solr a zejména HBase a provozující frontendovou aplikaci WACloud v dockeru
+- 1x Name node: provozující koordinační služby HDFS klastru (hlídání a přidělování prostředků, mapování a redukce dat, pouštění a plánování úkolů) a koordinace HBASE databáze. Name node obsahuje dále instalaci WACloud exportéra a jeho běžící službu pro koordinaci s frontendovou aplikací
+- 4x Data node: provozující datové úložiště na discích organizovaných pomocí přístupu JBOD a orchestrovaných name nodem. Data node dále podporuje datové a výpočetní operace HDFS a SPARK
+
+Implementace všech řešení stacku je realizována primárně prostřednictvím [Bigtop 3.11](https://cwiki.apache.org/confluence/display/BIGTOP/Bigtop+3.1.1+Release) a nástroje Puppet pro orchestraci konfigurace a automatizaci nasazování. Obsahuje kromě velkého množství knihoven tyto prvky v následujících verzích:
+
+- (ambari 2.7.5 client)
+- bigtop-utils 3.1.1
+- hadoop 3.2.4
+- hbase 2.4.11
+- solr 8.11.1
+- spark 3.1.2
+- zookeeper 3.5.9
+
+Name node provozuje daemony dostupné z výpisu Java Virtual Machine Process Status Tool (JPS): Master, HMaster, QorumPeer, ResourceMaster, Jps, NameNode, HRegionServer, ThriftServer, JobHistoryServer, WebAppProxyServer, NodeManager
+
+Data node provozuje daemony: Jps, NodeManager,QuorumPeerMain, DataNode
+
+Provozní cluster momentálně poskytuje kapacitu o velikosti 164 TB, tj. 41 TB per DataNode. Data jsou ukládána při nastavení trojnásobného replikačního faktoru, tj. nacházejí se vždy ve třech instancích, tak aby byla zajištěna resilience clusteru jako celku i při výpadku jeho jednotlivých nodů. Datová komunikace mezi všemi nody podporuje dedikovaná linka na metalickém 10 GBit Huawei switch.
+
+Řešení bylo původně implementováno pomocí Ambari 2.7.5, ale změna (zpoplatnění) přístupu k repozitářum znemožnilo dále používat tuto konfigurační, orchestrační a monitorovací platformu, a proto původní testovací prostředí není již dále podporováno.
+
+Pro samotný provoz výpočetních úkolů na clusteru je pomocí Anacondy nainstalován Python s dalšími závislostmi analytického skriptu ArchiveProcessor (viz. níže) a na každém data nodu rozdistribuován model pro identifikaci témat, tak aby ho nebylo nutné přenášet vždy při novém výpočetním úkolu. Cluster neobsahuje model pro analýzu zvuku, který je udržován v prostředí ZČU. 
 
 Pro každý node v clusteru je požadovaný Python verze 3.7 a vyšší (všechny nody musí mít stejnou verzi). Vyžadované jsou i nasledující balíčky: [jsonschema](https://github.com/Julian/jsonschema "jsonschema"), [justext v3.0](http://corpus.tools/wiki/Justext "justext v3.0"), [NLTK ](https://www.nltk.org/ "NLTK ")s Punkt corpusem, [scikit-learn](https://scikit-learn.org/stable/ "scikit-learn"), [pyspark](https://github.com/apache/spark/tree/master/python "pyspark"),[ lxml](https://github.com/lxml/lxml " lxml"), [happybase](https://github.com/wbolster/happybase "happybase"), [keras](https://github.com/keras-team/keras "keras"), [tensorflow](https://github.com/tensorflow/tensorflow "tensorflow"), [keras-bert](https://github.com/CyberZHG/keras-bert "keras-bert").
 
