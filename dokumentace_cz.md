@@ -221,10 +221,8 @@ Instalace nástroje *Anaconda* (virtuální prostředí obsahující programovac
     chmod +x ./anaconda.sh
     sudo ./anaconda.sh -b -p /opt/anaconda3
     rm -f ./anaconda.sh
-    Instalace nástroje ArchiveProcessor z gitlabu a potřebných Python balíků:
-    cd ~
-    git clone https://gitlab1.nkp.cz/kybernetika-zcu/archiveprocessor.git
-    sudo /opt/anaconda3/bin/pip install -r ./archiveprocessor/requirements.txt
+    
+Instalace nástroje ArchiveProcessor 
 
 Příprava lokálních adresářů (pro logy a modely):
 
@@ -232,12 +230,7 @@ Příprava lokálních adresářů (pro logy a modely):
     sudo setfacl -R -m u:spark:rwx,d:u:spark:rwx /opt/archiveprocessor
     sudo setfacl -R -m u:yarn:rwx,d:u:yarn:rwx /opt/archiveprocessor
 
-Stažení natrénovaných modelů umělé inteligence. Jedná se o velké soubory, proto nejsou součástí gitu, ale stahují se z jednorázově vygenerovaných odkazů, např.:
-
-    cd /opt/archiveprocessor
-    sudo wget -O trained_classifiers.tar.gz "https://filesender.cesnet.cz/download.php?token=382475bb-da8d-cbf2-aca3-502b6e997043&files_ids=164942"
-    sudo tar xzf trained_classifiers.tar.gz
-    sudo rm trained_classifiers.tar.gz
+Stažení natrénovaných modelů umělé inteligence. Jedná se o velké soubory, proto nejsou součástí gitu, ale stahují se z jednorázově vygenerovaných odkazů
 
 **Příprava na vybraném stroji, ze kterého se budou úlohy spouštět (obvykle NameNode)**
 Přesunutí nástroje *ArchiveProcessor* do složky /opt a nastavení práv uživateli *Spark*, který bude nástroj spouštět:
