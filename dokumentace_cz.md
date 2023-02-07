@@ -222,7 +222,11 @@ Instalace nástroje *Anaconda* (virtuální prostředí obsahující programovac
     sudo ./anaconda.sh -b -p /opt/anaconda3
     rm -f ./anaconda.sh
     
-Instalace nástroje ArchiveProcessor 
+Instalace nástroje ArchiveProcessor z GitHubu a potřebných Python balíků:
+    
+    cd ~
+    git clone https://github.com/WebarchivCZ/WACloud_ArchiveProcessor 
+    sudo /opt/anaconda3/bin/pip install -r ./archiveprocessor/requirements.txt
 
 Příprava lokálních adresářů (pro logy a modely):
 
